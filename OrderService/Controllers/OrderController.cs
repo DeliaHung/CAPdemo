@@ -16,11 +16,19 @@ namespace OrderService.Controllers
             _capPublisher = capPublisher;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
+        [HttpPost(Name = "CreateOrder")]
         public void CreateOrder()
         {
             //商業邏輯..
             //建立訂單完成
+            SendSmsDto sendSmsDto = new () { PhoneNumber = "0987887887", Content = "使用.NET core CAP 實現微服務事件發送" };
+            _capPublisher.Publish("SendSms",sendSmsDto);
         }
+    }
+
+    public record SendSmsDto
+    {
+        public string PhoneNumber { get; set; }
+        public string Content { get; set; }
     }
 }

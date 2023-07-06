@@ -12,11 +12,5 @@ namespace MessageService.Controllers
         {
             _logger = logger;
         }
-
-
-        public IEnumerable<WeatherForecast> SendEmail()
-        {
-
-        }
     }
 }

@@ -10,15 +10,16 @@ builder.Services.AddSwaggerGen();
 //CAP
 builder.Services.AddCap(x =>
 {
-    x.UseRabbitMQ(opt =>
-    { 
+    x.UseRabbitMQ(opt => {
         opt.HostName = "localhost";
         opt.Port = 15672;
+        opt.UserName = "guest";
+        opt.Password = "guest";
     });
 
     x.UseSqlServer(opt =>
     {
-        opt.ConnectionString = "Data Source=.;Initial Catalog=CAPdemo;Integrated Security=True";
+        opt.ConnectionString = "Data Source=.;Initial Catalog=CAPdemo;Integrated Security=True;TrustServerCertificate=true";
     });
 });
 
